@@ -12,6 +12,13 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
+  "description": "JSONLens - Semantic JSON Diff, Beautifier, Formatter, Validator & Type Generator",
+  "author": {
+    "name": "Rajesh Narwal",
+    "email": "rajesh@grassroot.digital",
+    "url": "https://grassroot.digital"
+  },
+  "homepage": "https://jsonlens.grassroot.digital",
   "build": {
     "appId": "digital.grassroot.jsonlens",
     "productName": "JSONLens",
@@ -34,6 +41,7 @@
     "linux": {
       "icon": "electron/icon.png",
       "category": "Development",
+      "maintainer": "Rajesh Narwal <rajesh@grassroot.digital>",
       "target": ["AppImage", "deb"]
     }
   },
