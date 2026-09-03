@@ -22,7 +22,11 @@ function createWindow() {
     app.dock.setIcon(path.join(__dirname, 'icon.png'));
   }
 
-  const indexPath = path.join(__dirname, '../jsonlens-dist/index.html');
+  const fs = require('fs');
+  let indexPath = path.join(__dirname, '../dist/index.html');
+  if (!fs.existsSync(indexPath)) {
+    indexPath = path.join(__dirname, '../jsonlens-dist/index.html');
+  }
   win.loadFile(indexPath);
 
   win.webContents.setWindowOpenHandler(({ url }) => {
