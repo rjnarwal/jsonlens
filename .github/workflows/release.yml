@@ -1,4 +1,4 @@
-name: Build and Release JSONLens Desktop
+name: Build and Release Desktop Apps
 
 on:
   push:
@@ -10,12 +10,25 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    name: Build ${{ matrix.os }}
+  release:
+    name: Build ${{ matrix.os }} (${{ matrix.arch }})
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        include:
+          - os: macos-latest
+            arch: arm64
+            target: --mac --arm64
+          - os: macos-latest
+            arch: x64
+            target: --mac --x64
+          - os: windows-latest
+            arch: x64
+            target: --win --x64
+          - os: ubuntu-latest
+            arch: x64
+            target: --linux --x64
 
     steps:
       - name: Checkout Source Code
@@ -24,17 +37,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build Web Bundle
+      - name: Build Web Application
         run: npm run build
 
-      - name: Compile Desktop Binary (electron-builder)
-        uses: samuelmeuli/action-electron-builder@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      - name: Compile & Publish Desktop Binary
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder ${{ matrix.target }} --publish always
