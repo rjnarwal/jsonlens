@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --color-bg-primary: #0a0d14;
+    --color-bg-secondary: #101522;
+    --color-bg-tertiary: #161c2e;
+    --color-bg-elevated: #1e2538;
+    --color-border-primary: #2b3754;
+    --color-border-secondary: #1a2236;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cbd5e1;
+    --color-text-muted: #94a3b8;
+    --color-accent: #3b82f6;
+    --color-accent-hover: #2563eb;
+    --color-accent-muted: rgba(59, 130, 246, 0.15);
+
+    /* Diff Semantic Colors (Dark) */
+    --diff-added-bg: rgba(34, 197, 94, 0.16);
+    --diff-added-border: rgba(34, 197, 94, 0.4);
+    --diff-added-text: #86efac;
+
+    --diff-removed-bg: rgba(239, 68, 68, 0.16);
+    --diff-removed-border: rgba(239, 68, 68, 0.4);
+    --diff-removed-text: #fca5a5;
+
+    --diff-modified-bg: rgba(245, 158, 11, 0.16);
+    --diff-modified-border: rgba(245, 158, 11, 0.4);
+    --diff-modified-text: #fde047;
+  }
+
+  .midnight {
+    color-scheme: dark;
+    --color-bg-primary: #060913;
+    --color-bg-secondary: #0b1120;
+    --color-bg-tertiary: #111a30;
+    --color-bg-elevated: #182442;
+    --color-border-primary: #233352;
+    --color-border-secondary: #151e2e;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cbd5e1;
+    --color-text-muted: #94a3b8;
+    --color-accent: #38bdf8;
+    --color-accent-hover: #0284c7;
+    --color-accent-muted: rgba(56, 189, 248, 0.15);
+
+    --diff-added-bg: rgba(34, 197, 94, 0.16);
+    --diff-added-border: rgba(34, 197, 94, 0.4);
+    --diff-added-text: #86efac;
+
+    --diff-removed-bg: rgba(239, 68, 68, 0.16);
+    --diff-removed-border: rgba(239, 68, 68, 0.4);
+    --diff-removed-text: #fca5a5;
+
+    --diff-modified-bg: rgba(245, 158, 11, 0.16);
+    --diff-modified-border: rgba(245, 158, 11, 0.4);
+    --diff-modified-text: #fde047;
+  }
+
+  .light {
+    color-scheme: light;
+    --color-bg-primary: #f8fafc;
+    --color-bg-secondary: #ffffff;
+    --color-bg-tertiary: #e2e8f0;
+    --color-bg-elevated: #ffffff;
+    --color-border-primary: #cbd5e1;
+    --color-border-secondary: #e2e8f0;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #334155;
+    --color-text-muted: #64748b;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --color-accent-muted: rgba(37, 99, 235, 0.12);
+
+    /* Deep High-Contrast Diff Colors for Light Background */
+    --diff-added-bg: #dcfce7;
+    --diff-added-border: #86efac;
+    --diff-added-text: #15803d;
+
+    --diff-removed-bg: #fee2e2;
+    --diff-removed-border: #fca5a5;
+    --diff-removed-text: #b91c1c;
+
+    --diff-modified-bg: #fef3c7;
+    --diff-modified-border: #fde047;
+    --diff-modified-text: #b45309;
+  }
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Explicit Form Inputs Contrast Guarantee */
+input, textarea, select {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-bg-primary) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-muted) !important;
+  opacity: 0.8 !important;
+}
+
+/* Diff Line Classes */
+.diff-line-added {
+  background-color: var(--diff-added-bg);
+  color: var(--diff-added-text);
+  border-left: 3px solid var(--diff-added-border);
+}
+
+.diff-line-removed {
+  background-color: var(--diff-removed-bg);
+  color: var(--diff-removed-text);
+  border-left: 3px solid var(--diff-removed-border);
+}
+
+.diff-line-modified {
+  background-color: var(--diff-modified-bg);
+  color: var(--diff-modified-text);
+  border-left: 3px solid var(--diff-modified-border);
+}
+
+.diff-line-unchanged {
+  color: var(--color-text-primary);
+}
+
+/* Ambient glow orb */
+.ambient-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}

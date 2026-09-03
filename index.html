@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><path d='M9 13h6'/><path d='M9 17h6'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0d14" />
+
+    <!-- Primary SEO Title & Search Metadata -->
+    <title>JSONLens | Semantic JSON Diff, Beautifier, Formatter & TypeScript/Go Generator</title>
+    <meta name="title" content="JSONLens | Semantic JSON Diff, Beautifier, Formatter & TypeScript/Go Generator" />
+    <meta name="description" content="JSONLens is a fast, 100% client-side JSON engineering studio. Compare JSON payloads with side-by-side semantic tree diffs, beautify and minify formatting, auto-repair syntax flaws, and generate TypeScript interfaces or Go structs." />
+    <meta name="keywords" content="JSON diff, JSON diff tool, compare JSON online, JSON beautifier, JSON formatter, JSON to TypeScript, JSON to Go struct, JSON to YAML, auto repair JSON, JSON minifier, semantic diff, JSONLens, Grassroot Digital, developer tools" />
+    <meta name="author" content="Rajesh Narwal" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jsonlens.grassroot.digital/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jsonlens.grassroot.digital/" />
+    <meta property="og:site_name" content="JSONLens" />
+    <meta property="og:title" content="JSONLens | Semantic JSON Diff, Formatter & Type Generator" />
+    <meta property="og:description" content="Compare JSON side-by-side, beautify, repair broken syntax, and generate TypeScript & Go models in your browser memory." />
+    <meta property="og:image" content="https://grassroot.digital/images/rajesh-narwal.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://jsonlens.grassroot.digital/" />
+    <meta name="twitter:title" content="JSONLens | Privacy-First JSON Diff & Studio" />
+    <meta name="twitter:description" content="Fast, 100% client-side JSON diff comparator, beautifier, and TypeScript/Go type generator." />
+    <meta name="twitter:image" content="https://grassroot.digital/images/rajesh-narwal.jpg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Schema.org JSON-LD Structured Data for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "JSONLens",
+          "url": "https://jsonlens.grassroot.digital",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "All modern browsers",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Semantic side-by-side and unified JSON diff comparator",
+            "Line-by-line added, removed, and modified structural change tracking",
+            "JSON Beautifier with 2/4/tab indentation options and key alphabetization",
+            "Instant JSON minifier",
+            "Syntax auto-repair for unquoted keys, trailing commas, and single quotes",
+            "Instant conversion from JSON to TypeScript interfaces and Go structs",
+            "Bidirectional JSON and YAML converter",
+            "Zero cloud telemetry and 100% local browser execution"
+          ],
+          "author": {
+            "@type": "Person",
+            "name": "Rajesh Narwal",
+            "url": "https://grassroot.digital/#about"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does JSONLens compare two JSON payloads?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "JSONLens performs a semantic comparison that parses and compares objects and arrays structurally, highlighting added keys, deleted fields, and modified values with visual colored diff badges and statistical metrics."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can JSONLens automatically fix broken JSON syntax?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! The Auto-Repair Syntax feature automatically detects and corrects common developer syntax errors such as trailing commas, single-quoted strings, and unquoted object property names."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-background text-text select-none antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
