@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FileCode2,
   GitCompare,
@@ -14,6 +14,19 @@ import {
 } from 'lucide-react';
 
 import { isDesktopEnvironment, isMacDesktopEnvironment } from '../utils/platform';
+import { DownloadDesktopModal, AppDownloadConfig } from './DownloadDesktopModal';
+
+const JSONLENS_DOWNLOAD_CONFIG: AppDownloadConfig = {
+  appName: 'JSONLens',
+  tagline: 'Semantic JSON Diff & High-Performance Formatter',
+  version: 'v1.0.0',
+  downloads: {
+    macArm: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-1.0.0-arm64.dmg',
+    macIntel: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-1.0.0.dmg',
+    winX64: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-Setup-1.0.0.exe',
+    linuxAppImage: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-1.0.0.AppImage',
+  },
+};
 
 interface NavbarProps {
   activeMode: 'diff' | 'formatter';
@@ -30,6 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onThemeChange,
   onOpenHistory,
 }) => {
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const isDesktop = isDesktopEnvironment();
   const isMac = isMacDesktopEnvironment();
 
@@ -112,16 +126,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Desktop App Download (Only on Web) */}
           {!isDesktop && (
-            <a
-              href="https://github.com/rjnarwal/jsonlens/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-xs font-semibold text-cyan-400 transition-colors shadow-sm"
+            <button
+              onClick={() => setIsDownloadModalOpen(true)}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-xs font-semibold text-cyan-400 transition-colors shadow-sm cursor-pointer"
               title="Download JSONLens Native Desktop App (Mac / Windows / Linux)"
             >
               <span className="hidden sm:inline">Desktop App ▾</span>
               <span className="sm:hidden">App ▾</span>
-            </a>
+            </button>
           )}
 
           {/* 3-Pill Theme Switcher matching Grassroot Ecosystem */}
@@ -165,6 +177,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Direct OS Binary Download Modal */}
+      {!isDesktop && (
+        <DownloadDesktopModal
+          isOpen={isDownloadModalOpen}
+          onClose={() => setIsDownloadModalOpen(false)}
+          config={JSONLENS_DOWNLOAD_CONFIG}
+        />
+      )}
     </header>
   );
 };
