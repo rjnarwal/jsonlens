@@ -30,6 +30,11 @@
     "win": {
       "icon": "electron/icon.ico",
       "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "icon": "electron/icon.png",
+      "category": "Development",
+      "target": ["AppImage", "deb"]
     }
   },
   "dependencies": {

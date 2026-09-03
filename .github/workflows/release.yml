@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   release:
     name: Build ${{ matrix.os }} (${{ matrix.arch }})
@@ -48,4 +52,5 @@ jobs:
       - name: Compile & Publish Desktop Binary
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: false
         run: npx electron-builder ${{ matrix.target }} --publish always
