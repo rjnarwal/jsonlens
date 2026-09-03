@@ -28,7 +28,7 @@
       "target": ["dmg", "zip"]
     },
     "win": {
-      "icon": "electron/icon.ico",
+      "icon": "electron/icon.png",
       "target": ["nsis", "portable"]
     },
     "linux": {
