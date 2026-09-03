@@ -52,7 +52,7 @@ jobs:
       - name: Compile Desktop Binary
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
-        run: npx electron-builder ${{ matrix.target }}
+        run: npx electron-builder ${{ matrix.target }} --publish never
 
       - name: Publish Public Release Assets
         uses: softprops/action-gh-release@v2
