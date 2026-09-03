@@ -34,5 +34,5 @@ export interface JSONHistoryItem {
   title: string;
   leftJson: string;
   rightJson?: string;
-  mode: 'diff' | 'format';
+  mode: 'diff' | 'formatter';
 }

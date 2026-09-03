@@ -15,7 +15,7 @@ export function saveJsonHistory(
   title: string,
   leftJson: string,
   rightJson?: string,
-  mode: 'diff' | 'format' = 'diff'
+  mode: 'diff' | 'formatter' = 'diff'
 ): JSONHistoryItem[] {
   try {
     const current = loadJsonHistory();
