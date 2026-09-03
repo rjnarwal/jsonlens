@@ -13,6 +13,8 @@ import {
   Braces,
 } from 'lucide-react';
 
+import { isDesktopEnvironment, isMacDesktopEnvironment } from '../utils/platform';
+
 interface NavbarProps {
   activeMode: 'diff' | 'formatter';
   onModeChange: (mode: 'diff' | 'formatter') => void;
@@ -28,11 +30,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   onThemeChange,
   onOpenHistory,
 }) => {
+  const isDesktop = isDesktopEnvironment();
+  const isMac = isMacDesktopEnvironment();
+
   return (
-    <header className="sticky top-0 z-40 bg-background-secondary/90 backdrop-blur-md border-b border-border select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+    <header className={`sticky top-0 z-40 bg-background-secondary/90 backdrop-blur-md border-b border-border select-none app-drag-region ${
+      isMac ? 'pl-24 pr-4' : 'px-4'
+    }`}>
+      <div className="max-w-7xl mx-auto h-14 flex items-center justify-between">
         {/* Brand & Mode Switcher */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 no-drag">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
@@ -75,70 +82,83 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Ecosystem Links */}
-          <div className="hidden lg:flex items-center space-x-2 pl-3 border-l border-border/60">
-            <a
-              href="https://grassroot.digital"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-emerald-500/40 group"
-              title="Grassroot Digital Welcome Hub"
-            >
-              <Home className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
-              <span>Home</span>
-              <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
-            </a>
+          {/* Ecosystem Links (Shown ONLY on Web, hidden on Desktop App) */}
+          {!isDesktop && (
+            <div className="hidden lg:flex items-center space-x-2 pl-3 border-l border-border/60">
+              <a
+                href="https://grassroot.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-emerald-500/40 group"
+                title="Grassroot Digital Welcome Hub"
+              >
+                <Home className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+                <span>Home</span>
+                <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
+              </a>
 
-            <a
-              href="https://endly.grassroot.digital"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-orange-500/40 group"
-              title="Launch Endly API Client"
-            >
-              <Zap className="w-3.5 h-3.5 text-orange-400 group-hover:scale-110 transition-transform" />
-              <span>Endly</span>
-              <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
-            </a>
+              <a
+                href="https://endly.grassroot.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-orange-500/40 group"
+                title="Launch Endly API Client"
+              >
+                <Zap className="w-3.5 h-3.5 text-orange-400 group-hover:scale-110 transition-transform" />
+                <span>Endly</span>
+                <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
+              </a>
 
-            <a
-              href="https://tokenlens.grassroot.digital"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-purple-500/40 group"
-              title="Launch TokenLens JWT Studio"
-            >
-              <KeyRound className="w-3.5 h-3.5 text-purple-400 group-hover:scale-110 transition-transform" />
-              <span>TokenLens</span>
-              <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
-            </a>
+              <a
+                href="https://tokenlens.grassroot.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-purple-500/40 group"
+                title="Launch TokenLens JWT Studio"
+              >
+                <KeyRound className="w-3.5 h-3.5 text-purple-400 group-hover:scale-110 transition-transform" />
+                <span>TokenLens</span>
+                <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
+              </a>
 
-            <a
-              href="https://regexforge.grassroot.digital"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-emerald-500/40 group"
-              title="Launch RegexForge Visual Studio"
-            >
-              <span className="text-[11px] font-mono font-bold text-emerald-400">.*</span>
-              <span>RegexForge</span>
-              <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
-            </a>
-          </div>
+              <a
+                href="https://regexforge.grassroot.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary hover:bg-background-tertiary transition-colors border border-border/50 hover:border-emerald-500/40 group"
+                title="Launch RegexForge Visual Studio"
+              >
+                <span className="text-[11px] font-mono font-bold text-emerald-400">.*</span>
+                <span>RegexForge</span>
+                <ExternalLink className="w-2.5 h-2.5 opacity-60 text-text-muted" />
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center space-x-2">
-          <a
-            href="https://github.com/rjnarwal/jsonlens/releases"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-xs font-semibold text-cyan-400 transition-colors shadow-sm"
-            title="Download JSONLens Native Desktop App (Mac / Windows / Linux)"
+        <div className="flex items-center space-x-2 no-drag">
+          <button
+            onClick={onOpenHistory}
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-background-tertiary hover:bg-background-elevated border border-border text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors shadow-sm"
           >
-            <span className="hidden sm:inline">Desktop App ▾</span>
-            <span className="sm:hidden">App ▾</span>
-          </a>
+            <History className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden sm:inline">History</span>
+          </button>
+
+          {/* Desktop App Download (Only on Web) */}
+          {!isDesktop && (
+            <a
+              href="https://github.com/rjnarwal/jsonlens/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-xs font-semibold text-cyan-400 transition-colors shadow-sm"
+              title="Download JSONLens Native Desktop App (Mac / Windows / Linux)"
+            >
+              <span className="hidden sm:inline">Desktop App ▾</span>
+              <span className="sm:hidden">App ▾</span>
+            </a>
+          )}
 
           {/* 3-Pill Theme Switcher matching Grassroot Ecosystem */}
           <div className="flex items-center bg-background-tertiary/80 border border-border rounded-xl p-0.5 ml-1">

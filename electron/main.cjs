@@ -15,6 +15,7 @@ function createWindow() {
       contextIsolation: true,
     },
     titleBarStyle: 'hiddenInset',
+    trafficLightPosition: { x: 16, y: 14 },
     autoHideMenuBar: true,
   });
 
