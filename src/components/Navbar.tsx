@@ -23,7 +23,7 @@ const JSONLENS_DOWNLOAD_CONFIG: AppDownloadConfig = {
   downloads: {
     macArm: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-1.0.0-arm64.dmg',
     macIntel: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-1.0.0.dmg',
-    winX64: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-Setup-1.0.0.exe',
+    winX64: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens.Setup.1.0.0.exe',
     linuxAppImage: 'https://github.com/rjnarwal/jsonlens/releases/download/v1.0.0/JSONLens-1.0.0.AppImage',
   },
 };

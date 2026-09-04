@@ -38,7 +38,7 @@ const DEFAULT_ENDLY_CONFIG: AppDownloadConfig = {
   downloads: {
     macArm: 'https://github.com/rjnarwal/endly/releases/download/v1.0.0/Endly-1.0.0-arm64.dmg',
     macIntel: 'https://github.com/rjnarwal/endly/releases/download/v1.0.0/Endly-1.0.0.dmg',
-    winX64: 'https://github.com/rjnarwal/endly/releases/download/v1.0.0/Endly-Setup-1.0.0.exe',
+    winX64: 'https://github.com/rjnarwal/endly/releases/download/v1.0.0/Endly.Setup.1.0.0.exe',
     linuxAppImage: 'https://github.com/rjnarwal/endly/releases/download/v1.0.0/Endly-1.0.0.AppImage',
     linuxDeb: 'https://github.com/rjnarwal/endly/releases/download/v1.0.0/endly_1.0.0_amd64.deb',
   },
@@ -109,7 +109,7 @@ export const DownloadDesktopModal: React.FC<DownloadDesktopModalProps> = ({
       case 'win':
         return {
           label: 'Windows 10 / 11 (64-bit)',
-          file: `${config.appName}-Setup-1.0.0.exe`,
+          file: `${config.appName}.Setup.1.0.0.exe`,
           url: config.downloads.winX64,
           icon: (
             <svg className="w-5 h-5 fill-current text-blue-400" viewBox="0 0 24 24">
