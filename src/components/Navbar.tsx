@@ -118,29 +118,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center space-x-2 no-drag">
           <button
             onClick={onOpenHistory}
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-background-tertiary hover:bg-background-elevated border border-border text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors shadow-sm"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-background-tertiary hover:bg-background-elevated border border-border text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors shadow-sm cursor-pointer"
           >
             <History className="w-3.5 h-3.5 text-emerald-400" />
             <span className="hidden sm:inline">History</span>
           </button>
 
-          {/* Desktop App Download (Only on Web) */}
-          {!isDesktop && (
-            <button
-              onClick={() => setIsDownloadModalOpen(true)}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-xs font-semibold text-cyan-400 transition-colors shadow-sm cursor-pointer"
-              title="Download JSONLens Native Desktop App (Mac / Windows / Linux)"
-            >
-              <span className="hidden sm:inline">Desktop App ▾</span>
-              <span className="sm:hidden">App ▾</span>
-            </button>
-          )}
-
           {/* 3-Pill Theme Switcher matching Grassroot Ecosystem */}
           <div className="flex items-center bg-background-tertiary/80 border border-border rounded-xl p-0.5 ml-1">
             <button
               onClick={() => onThemeChange('dark')}
-              className={`p-1.5 rounded-lg text-xs transition-all ${
+              className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
                 theme === 'dark'
                   ? 'bg-accent text-white shadow-sm font-semibold'
                   : 'text-text-muted hover:text-text-primary'
@@ -152,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
             <button
               onClick={() => onThemeChange('midnight')}
-              className={`px-2 py-1 rounded-lg text-[10px] font-mono transition-all ${
+              className={`px-2 py-1 rounded-lg text-[10px] font-mono transition-all cursor-pointer ${
                 theme === 'midnight'
                   ? 'bg-blue-600 text-white shadow-sm font-semibold'
                   : 'text-text-muted hover:text-text-primary'
@@ -164,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
             <button
               onClick={() => onThemeChange('light')}
-              className={`p-1.5 rounded-lg text-xs transition-all ${
+              className={`p-1.5 rounded-lg text-xs transition-all cursor-pointer ${
                 theme === 'light'
                   ? 'bg-amber-500 text-white shadow-sm font-semibold'
                   : 'text-text-muted hover:text-text-primary'
@@ -177,15 +165,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </div>
-
-      {/* Direct OS Binary Download Modal */}
-      {!isDesktop && (
-        <DownloadDesktopModal
-          isOpen={isDownloadModalOpen}
-          onClose={() => setIsDownloadModalOpen(false)}
-          config={JSONLENS_DOWNLOAD_CONFIG}
-        />
-      )}
     </header>
   );
 };
